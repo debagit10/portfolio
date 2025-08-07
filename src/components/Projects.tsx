@@ -1,7 +1,9 @@
 import Slider from "react-slick";
-import { Button, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+
+import { useState, useEffect } from "react";
 
 const projects = [
   {
@@ -46,7 +48,7 @@ const settings = {
   dots: true,
   infinite: true,
   speed: 700,
-  slidesToShow: 3,
+  slidesToShow: 1,
   slidesToScroll: 1,
   autoplay: true,
   autoplaySpeed: 2500,
@@ -64,82 +66,69 @@ const settings = {
 };
 
 const Projects = () => {
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true); // Ensures slider only renders on client
+  }, []);
+
+  if (!isClient) return null; // Avoid rendering on SSR
+
   return (
-    <section
-      id="projects"
-      className="max-w-6xl md:mx-auto mx-[.5rem] px-4 py-12 text-white"
-    >
+    <section id="projects" className="w-full px-4 py-12 text-white">
       <div className="text-center mb-8">
-        <Typography variant="h5" className="text-white mb-2">
-          My Projects
-        </Typography>
         <p className="text-gray-400 max-w-xl mx-auto">
           A few of the web and mobile backend projects I’ve worked on recently.
         </p>
       </div>
 
-      <Slider {...settings}>
-        {projects.map((project, idx) => (
-          <div key={idx} className="p-4">
-            <div className="rounded-xl bg-white/5 p-4 border border-white/10 shadow-lg h-full flex flex-col">
-              <img
-                src={project.image}
-                alt={project.title}
-                className="rounded-lg w-full h-48 object-cover mb-4"
-              />
-              <Typography variant="h6" className="text-white mb-1">
-                {project.title}
-              </Typography>
-              <p className="italic text-sm text-gray-400 mb-1">
-                {project.type} Project
-              </p>
-              <p className="text-sm text-gray-300 mb-3">
-                {project.description}
-              </p>
-              <div className="mt-auto flex gap-2">
-                {project.liveLink && (
-                  <a
-                    href={project.liveLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <Button
-                      variant="outlined"
-                      size="small"
-                      sx={{
-                        color: "#d1d5db",
-                        borderColor: "#d1d5db",
-                        textTransform: "none",
-                      }}
+      <div className="w-full max-w-6xl mx-auto">
+        <Slider {...settings}>
+          {projects.map((project, idx) => (
+            <div key={idx} className="px-2">
+              <div className="rounded-xl bg-white/5 p-4 border border-white/10 shadow-lg h-full flex flex-col max-w-md mx-auto">
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  className="rounded-lg w-full h-48 object-cover mb-4"
+                />
+                <h3 className="text-xl font-semibold mb-1 text-white">
+                  {project.title}
+                </h3>
+                <p className="italic text-sm text-gray-400 mb-1">
+                  {project.type} Project
+                </p>
+                <p className="text-sm text-gray-300 mb-3">
+                  {project.description}
+                </p>
+
+                <div className="mt-auto flex gap-2 flex-wrap">
+                  {project.liveLink && (
+                    <a
+                      href={project.liveLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="px-3 py-1 border border-gray-300 text-sm rounded-md hover:bg-white/10 transition"
                     >
                       Live Site
-                    </Button>
-                  </a>
-                )}
-                {project.github && (
-                  <a
-                    href={project.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <Button
-                      variant="outlined"
-                      size="small"
-                      sx={{
-                        color: "#d1d5db",
-                        borderColor: "#d1d5db",
-                        textTransform: "none",
-                      }}
+                    </a>
+                  )}
+                  {project.github && (
+                    <a
+                      href={project.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="px-3 py-1 border border-gray-300 text-sm rounded-md hover:bg-white/10 transition"
                     >
                       GitHub
-                    </Button>
-                  </a>
-                )}
+                    </a>
+                  )}
+                </div>
               </div>
             </div>
-          </div>
-        ))}
-      </Slider>
+          ))}
+        </Slider>
+      </div>
     </section>
   );
 };
