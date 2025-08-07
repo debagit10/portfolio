@@ -4,17 +4,25 @@ const Hero = () => {
   return (
     <div className="flex flex-col md:flex-row items-center justify-between px-6 md:px-20 py-12 text-white min-h-[80vh]">
       {/* Left Text Section */}
-      <div className="flex flex-col gap-4 text-center md:text-left max-w-xl">
-        <Typography variant="h4" className="!font-bold !text-gray-200">
-          Hello, I'm <span className="text-silver-300">Josiah Elias</span>
+      <div className="flex flex-col gap-4 text-center md:text-left max-w-xl px-4 md:px-0">
+        <Typography
+          variant="h4"
+          className="!font-bold text-gray-200 text-lg sm:text-xl md:text-2xl"
+        >
+          Hello, I'm <span className="text-slate-300">Josiah Elias</span>
         </Typography>
+
         <Typography
           variant="h2"
-          className="!font-extrabold !text-4xl md:!text-5xl !leading-tight"
+          className="!font-extrabold leading-tight text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white"
         >
           Software Developer
         </Typography>
-        <Typography variant="h5" className="!text-gray-400 !font-medium">
+
+        <Typography
+          variant="h5"
+          className="text-gray-400 font-medium text-md sm:text-lg md:text-xl"
+        >
           & Tech Content Creator
         </Typography>
       </div>

@@ -2,8 +2,6 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-import { useState, useEffect } from "react";
-
 const projects = [
   {
     title: "Web Portfolio",
@@ -51,7 +49,7 @@ const settings = {
   slidesToScroll: 1,
   autoplay: true,
   autoplaySpeed: 2500,
-  arrows: true,
+  arrows: false,
   responsive: [
     {
       breakpoint: 1024,
@@ -65,14 +63,6 @@ const settings = {
 };
 
 const Projects = () => {
-  const [isClient, setIsClient] = useState(false);
-
-  useEffect(() => {
-    setIsClient(true); // Ensures slider only renders on client
-  }, []);
-
-  if (!isClient) return null; // Avoid rendering on SSR
-
   return (
     <section id="projects" className="w-full px-4 py-12 text-white">
       <div className="text-center mb-8">
@@ -81,11 +71,11 @@ const Projects = () => {
         </p>
       </div>
 
-      <div className="w-full max-w-6xl mx-auto">
+      <div className="w-full max-w-6xl md:mx-auto mx-[.5rem]">
         <Slider {...settings}>
           {projects.map((project, idx) => (
             <div key={idx} className="px-2">
-              <div className="rounded-xl bg-white/5 p-4 border border-white/10 shadow-lg h-full flex flex-col max-w-md mx-auto">
+              <div className="rounded-xl bg-white/5 p-4 border border-white/10 shadow-lg h-full flex flex-col max-w-md md:mx-auto mx-[.5rem]">
                 <img
                   src={project.image}
                   alt={project.title}
