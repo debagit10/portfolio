@@ -1,4 +1,4 @@
-import { Typography } from "@mui/material";
+import { Button, Typography } from "@mui/material";
 
 const Hero = () => {
   return (
@@ -25,6 +25,25 @@ const Hero = () => {
         >
           & Tech Content Creator
         </Typography>
+
+        <div className="flex justify-center">
+          <Button
+            variant="outlined"
+            color="primary"
+            href="/resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            sx={{
+              width: "fit-content",
+              textTransform: "capitalize",
+              borderColor: "white",
+              color: "white",
+              "&:hover": { backgroundColor: "rgba(255,255,255,0.1)" },
+            }}
+          >
+            My Resume
+          </Button>
+        </div>
       </div>
 
       {/* Image Section */}
