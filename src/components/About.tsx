@@ -2,7 +2,7 @@ const About = () => {
   return (
     <section
       id="about"
-      className="max-w-5xl mx-[.5rem] md:mx-auto my-8 px-6 py-12 rounded-xl  backdrop-blur-md shadow-md border border-white/20 text-white"
+      className="max-w-5xl mx-[.5rem] lg:mx-auto my-8 px-6 py-12 rounded-xl  backdrop-blur-md shadow-md border border-white/20 text-white"
     >
       <div className="text-center mb-8">
         <p className="text-gray-300 max-w-2xl mx-auto">

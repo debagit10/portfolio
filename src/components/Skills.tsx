@@ -45,7 +45,7 @@ const Skills = () => {
   return (
     <section
       id="skills"
-      className="max-w-5xl md:mx-auto mx-[.5rem] my-8 px-6 py-12 rounded-xl  backdrop-blur-md shadow-md border border-white/20 text-white"
+      className="max-w-5xl lg:mx-auto mx-[.5rem] my-8 px-6 py-12 rounded-xl  backdrop-blur-md shadow-md border border-white/20 text-white"
     >
       <div className="grid md:grid-cols-3 gap-8 text-gray-300">
         {/* Frontend */}
